@@ -2,10 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:include="fragments/head" th:with="pageTitle='Ducky-Debug'"></head>
 
-<body>
+<body class="mdc-typography" bgcolor="#d8f3ea">
 <header th:include="fragments/header"></header>
 
-<main class="mdc-toolbar-fixed-adjust" th:include="${view}"></main>
+<main class="mdc-toolbar-fixed-adjust">
+    <div class="mdc-card mainCardAttr">
+        <div th:include="${view}"></div>
+    </div>
+</main>
 
 <footer th:include="fragments/footer"></footer>
 <span th:include="fragments/script-bundle"></span>

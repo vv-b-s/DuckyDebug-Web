@@ -3,3 +3,36 @@
     --mdc-theme-secondary: #51cba2;
     --mdc-theme-background: #fff;
 }
+
+
+.mainCardAttr{
+    width:80%;
+    margin-left: 10%;
+    margin-top: 10%;
+    padding: 3%;
+    background-color: #e6e6e6;
+}
+
+.background_card{
+    background: #ffffff;
+    height: auto;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.logcard-title-and-subtitle{
+    display: inline-block;
+    width: 70%;
+}
+.logcard-actions{
+    display: inline-block;
+    width: 20%;
+    padding: 0;
+}
+
+.logcard-actionBTNS-constrains{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}

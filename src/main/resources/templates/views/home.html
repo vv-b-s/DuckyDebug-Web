@@ -1,3 +1,21 @@
-<main>
-
-</main>
+<th:block th:each="log :${logs}">
+    <div>
+        <div class="mdc-card background_card" style="display: inline-block">
+            <section class="mdc-card__primary logcard-title-and-subtitle">
+                <h1 th:text="${log.title}" class="mdc-card__title mdc-card__title--large"></h1>
+                <h2 th:text="${log.creationDate}" class="mdc-card__subtitle"></h2>
+            </section>
+            <!-- TODO: fix margins -->
+            <section class="mdc-card__actions logcard-actions">
+                <button class="mdc-button mdc-button--compact mdc-card__action logcard-actionBTNS-constrains">B 1</button>
+                <button class="mdc-button mdc-button--compact mdc-card__action logcard-actionBTNS-constrains">B 2</button>
+            </section>
+            <section th:text="${log.description}" class="mdc-card__supporting-text">
+            </section>
+            <section class="mdc-card__actions">
+                <!--TODO: Add log id-->
+                <button class="mdc-button mdc-button--compact mdc-card__action">View</button>
+            </section>
+        </div>
+    </div>
+</th:block>
