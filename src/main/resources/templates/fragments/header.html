@@ -1,0 +1,11 @@
+<header th:fragment="header" class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall mdc-toolbar--flexible-space-maximized">
+    <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+            <span class="catalog-logo">
+            <img th:src="@{/img/ducky-logo.png}" height="50dp" width="50dp"/>
+          </span>
+            <span class="mdc-toolbar__title catalog-title">Ducky-Debug |</span>
+            <span class="mdc-toolbar__title catalog-title" th:text="${toolbarPageName}"></span>
+        </section>
+    </div>
+</header>
