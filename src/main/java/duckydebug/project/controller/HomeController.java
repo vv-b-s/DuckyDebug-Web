@@ -13,9 +13,9 @@ public class HomeController {
     public String home(Model model){
 
         ArrayList<Log> logs = new ArrayList<>();
-        logs.add(new Log("Log1","1.1.1", "A log to test it"));
-        logs.add(new Log("Log2","1.1.1", "A log to test it"));
-        logs.add(new Log("Log3","1.1.1", "A log to test it"));
+        logs.add(new Log("Log1","1.1.1", "A log to test it", false));
+        logs.add(new Log("Log2","1.1.1", "A log to test it", true));
+        logs.add(new Log("Log3","1.1.1", "A log to test it", false));
 
 
         model.addAttribute("logs",logs);
@@ -30,11 +30,13 @@ class Log{
     String title;
     String creationDate;
     String description;
+    Boolean isCompleted;
 
-    public Log(String title, String creationDate, String description) {
+    public Log(String title, String creationDate, String description, Boolean isCompleted) {
         this.title = title;
         this.creationDate = creationDate;
         this.description = description;
+        this.isCompleted = isCompleted;
     }
 
     public String getTitle() {
@@ -59,5 +61,13 @@ class Log{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getIsCompleted() {
+        return isCompleted;
+    }
+
+    public void setIsCompleted(Boolean completed) {
+        isCompleted = completed;
     }
 }

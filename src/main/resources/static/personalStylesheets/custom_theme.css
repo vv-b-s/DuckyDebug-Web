@@ -7,10 +7,16 @@
 
 .mainCardAttr{
     width:80%;
-    margin-left: 10%;
     margin-top: 10%;
-    padding: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: #e6e6e6;
+    padding: 3%;
 }
 
 .background_card{
@@ -21,12 +27,13 @@
 }
 
 .logcard-title-and-subtitle{
+
     display: inline-block;
-    width: 70%;
+    width: 80%;
 }
 .logcard-actions{
     display: inline-block;
-    width: 20%;
+    float: right;
     padding: 0;
 }
 
@@ -35,4 +42,28 @@
     padding-right: 0;
     margin-left: 0;
     margin-right: 0;
+}
+.mdc-checkbox{
+    height: 40px;
+    width: 40px;
+}
+
+.mdc-form-field{
+    height: 50%;
+    width: 50%;
+}
+
+.mdc-checkbox__background{
+    left: 16px;
+    right: 0;
+    top: 16px;
+    height: 30px;
+    width: 30px;
+}
+
+.mdc-fab{
+    position: fixed;
+    bottom: 3rem;
+    right: 3.5rem;
+    z-index: 1;
 }
