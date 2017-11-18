@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class EulaController {
     @GetMapping("/eula")
     public String redirectToEula(Model model){
+        model.addAttribute("toolbarPageName", "End User Licence Agreement");
         model.addAttribute("view","views/eula");
         return "base-layout";
     }
