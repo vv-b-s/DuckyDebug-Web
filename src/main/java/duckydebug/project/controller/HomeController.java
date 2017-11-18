@@ -13,9 +13,9 @@ public class HomeController {
     public String home(Model model){
 
         ArrayList<Log> logs = new ArrayList<>();
-        logs.add(new Log("Log1","1.1.1", "A log to test it", false));
-        logs.add(new Log("Log2","1.1.1", "A log to test it", true));
-        logs.add(new Log("Log3","1.1.1", "A log to test it", false));
+        logs.add(new Log("Log title here","1/01/2017", "A short description", false));
+        logs.add(new Log("Log title here","1/01/2017", "A short description", true));
+        logs.add(new Log("Log title here","1/01/2017", "A short description", false));
 
 
         model.addAttribute("logs",logs);
