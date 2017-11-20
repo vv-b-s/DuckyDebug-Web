@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class HomeController {
 
     @GetMapping("/")
-    public String home(Model model){
+    public String getHome(Model model){
 
         ArrayList<Log> logs = new ArrayList<>();
         logs.add(new Log("Log title here","1/01/2017", "A short description", false));
