@@ -77,3 +77,8 @@
     margin-bottom: 10px;
     margin-top: 10px;
 }
+
+#logDescriptionTextView{
+    word-wrap: break-word;
+    padding-top: 11px;
+}

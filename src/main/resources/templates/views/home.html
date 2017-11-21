@@ -5,7 +5,7 @@
         'delete' and 'view'-->
         <div class="mdc-card background_card" style="display: inline-block">
             <section class="mdc-card__primary logcard-title-and-subtitle">
-                <h1 th:text="${log.title}" class="mdc-card__title mdc-card__title--large"></h1>
+                <h1 th:text="${log.title}" style="word-wrap: break-word;" class="mdc-card__title mdc-card__title--large"></h1>
                 <h2 th:text="${log.dateCreated}" class="mdc-card__subtitle"></h2>
             </section>
             <section class="mdc-card__actions--vertical logcard-actions">
@@ -38,7 +38,7 @@
                 </form>
                 <button class="mdc-button mdc-button--compact mdc-card__action logcard-actionBTNS-constrains"><i class="material-icons md-36" style="font-size: 30px; background-color: #ffcccc; padding: 0.9px; position: absolute; top: 0; left: 15px;">delete</i></button>
             </section>
-            <section th:text="${log.description}" class="mdc-card__supporting-text">
+            <section id="logDescriptionTextView" th:text="${log.description}" class="mdc-card__supporting-text">
             </section>
             <section class="mdc-card__actions">
                 <!--TODO: Add log id-->
