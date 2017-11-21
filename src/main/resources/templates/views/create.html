@@ -1,9 +1,13 @@
 <!-- Create logs. Each log has its own question and answer to provide after -->
 <!--Objects binded with entity thanks to this topic: https://stackoverflow.com/questions/36500731/how-to-bind-an-object-list-with-thymeleaf -->
 <form th:action="@{/create}" method="post" th:object="${logBindingModel}">
+    <p>Log title</p><input type="text" th:name="logTitle"/>
+    <p>Log Description</p><input type="text" th:name="logDescription"/>
     <div th:each="question, stat : ${logBindingModel.questions}">
         <p th:text="${question.getText()}"></p>
         <input type="text" th:value="${question.getAnswer()}" placeholder="Answer..." th:name="|questions[${stat.index}].answer|"/>
+        <!--Question ID is needed to keep relation with the answer-->
+        <input type="hidden" th:name="|questions[${stat.index}].id|" th:value="${question.getId()}"/>
     </div>
     <input type="submit"/>
 </form>
