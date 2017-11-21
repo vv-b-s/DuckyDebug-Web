@@ -1,2 +1,9 @@
-<script th:src="@{/node_modules/material-components-web/dist/material-components-web.js}"></script>
+<script th:src="@{/node_modules/material-components-web/dist/material-components-web.js}"
+        xmlns:th="http://www.w3.org/1999/xhtml"></script>
 <script>mdc.autoInit()</script>
+<script>
+    document.getElementById("drawer-1-button").addEventListener('click',function() {
+        let drawer = document.getElementById("drawer-1");
+        mdc.drawer.MDCTemporaryDrawer.attachTo(drawer).open = true;
+    });
+</script>

@@ -1,5 +1,6 @@
 <header th:fragment="header" class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--flexible-space-maximized">
     <div class="mdc-toolbar__row">
+        <!--Logo and page information here-->
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
             <a th:href="@{/}"><span class="catalog-logo">
                 <img th:src="@{/img/ducky-logo.png}" height="50dp" width="50dp"/>
@@ -7,5 +8,23 @@
             <span class="mdc-toolbar__title catalog-title">Ducky-Debug |</span>
             <span class="mdc-toolbar__title catalog-title" th:text="${toolbarPageName}"></span>
         </section>
+       <!--Button to open the drawer -->
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+            <button id="drawer-1-button" href="#" data-target="drawer-1" class="material-icons mdc-toolbar__menu-icon">menu</button>
+        </section>
     </div>
+    <!--Navigation drawer here-->
+    <aside id="drawer-1" class="mdc-temporary-drawer" dir="rtl">
+        <nav class="mdc-temporary-drawer__drawer" dir="ltr">
+            <!--Navigation drawer items-->
+            <nav class="mdc-temporary-drawer__content" id="drawer-items">
+                <a class="mdc-list-item mdc-temporary-drawer--selected" th:href="@{/}">
+                    <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">home</i>Home
+                </a>
+                <a class="mdc-list-item mdc-temporary-drawer--selected" th:href="@{/help}">
+                    <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">help</i>Help
+                </a>
+            </nav>
+        </nav>
+    </aside>
 </header>
