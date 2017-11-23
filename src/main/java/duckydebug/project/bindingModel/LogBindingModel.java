@@ -8,6 +8,7 @@ public class LogBindingModel {
     private List<Question> questions;
     private String logTitle;
     private String logDescription;
+    private Integer logId;
 
     public LogBindingModel(List<Question> questions) {
         this.questions = questions;
@@ -38,5 +39,13 @@ public class LogBindingModel {
 
     public void setLogDescription(String logDescription) {
         this.logDescription = logDescription;
+    }
+
+    public Integer getLogId() {
+        return logId;
+    }
+
+    public void setLogId(Integer logId) {
+        this.logId = logId;
     }
 }

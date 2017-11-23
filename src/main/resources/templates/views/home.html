@@ -9,8 +9,7 @@
                 <h2 th:text="${log.dateCreated}" class="mdc-card__subtitle"></h2>
             </section>
             <section class="mdc-card__actions--vertical logcard-actions">
-                <!--TODO: Add method and log id to be related with (Consider AJAX)-->
-                <form>
+                <form  method="get" th:action="@{/log/{id}/ch-marked(id = ${log.id})}">
                 <!--This section has a condition to run. If the log is completed, the checkbox will have 'checked' attribute
                 if not, there will be no 'checked' attribute-->
                 <div th:if="${log.isCompleted}">
@@ -36,13 +35,12 @@
                     </div>
                 </div>
                 </form>
-                <button class="mdc-button mdc-button--compact mdc-card__action logcard-actionBTNS-constrains"><i class="material-icons md-36" style="font-size: 30px; background-color: #ffcccc; padding: 0.9px; position: absolute; top: 0; left: 15px;">delete</i></button>
+                <button id="logDeleteButton" th:onclick="|onLogDeleteBtnClick('${log.id}')|" class="mdc-button mdc-button--compact mdc-card__action logcard-actionBTNS-constrains"><i class="material-icons md-36" style="font-size: 30px; background-color: #ffcccc; padding: 0.9px; position: absolute; top: 0; left: 15px;">delete</i></button>
             </section>
             <section id="logDescriptionTextView" th:text="${log.description}" class="mdc-card__supporting-text">
             </section>
             <section class="mdc-card__actions">
-                <!--TODO: Add log id-->
-                <a href="http://google.com"><button class="mdc-button mdc-button--compact mdc-card__action">View</button></a>
+                <button class="mdc-button mdc-button--compact mdc-card__action">View</button>
             </section>
         </div>
     </div>
@@ -57,3 +55,14 @@
         </span>
     </button>
 </a>
+<script>
+    function onLogDeleteBtnClick(logID) {
+        let confirmation = confirm("Do you really want to delete this log?\nPlease keep in mind that this is irreversible action!");
+        switch (confirmation){
+            case true:
+                window.location.replace(`/log/${logID}/delete`);
+                break;
+            case false: break;
+        }
+    }
+</script>

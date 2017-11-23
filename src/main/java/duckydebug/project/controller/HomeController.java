@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +25,37 @@ public class HomeController {
         model.addAttribute("view","views/home");
 
         return "base-layout";
+    }
+
+    /**
+     * This method is called when a checkmark on a log page is clicked and if the log exist will
+     * either check it as finished / unfinished according to its previous state
+     * @param id
+     * @return
+     */
+    @GetMapping("/log/{id}/ch-marked")
+    public String getLogCheckMarked(@PathVariable Integer id){
+        Log log = logRepository.findOne(id);
+        if(log != null){
+            log.setIsCompleted(!log.getIsCompleted());
+            logRepository.saveAndFlush(log);
+        }
+
+        return "redirect:/";
+    }
+
+    /**
+     * Delete a log and its associated data
+     * @param id
+     * @return
+     */
+    @GetMapping("/log/{id}/delete")
+    public String getLogDelete(@PathVariable Integer id){
+        Log log = logRepository.findOne(id);
+
+        if(log!=null)
+            logRepository.delete(log);
+
+        return "redirect:/";
     }
 }
