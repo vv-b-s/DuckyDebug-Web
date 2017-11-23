@@ -28,9 +28,11 @@ public class CreateViewEditController {
     @Autowired
     private AnswerRepository answerRepository;
 
+    private List<Question> questions;
+
     @GetMapping("/create")
     public String getCreate(Model model){
-        List<Question> questions = questionRepository.findAll();
+        questions = questionRepository.findAll();
 
         // Since this is a demo app, there will be limited set of questions which will be generated on fist initialization
         if(questions.size()==0)
@@ -55,8 +57,10 @@ public class CreateViewEditController {
         logRepository.saveAndFlush(log);
 
         //Create answer entities and save them to the database
-        for(Question question:logBindingModel.getQuestions()){
-            Answer answer = new Answer(question.getAnswer(),question.getId(), log.getId());
+        for(Question questionBindingModel:logBindingModel.getQuestions()){
+            String answerText = questionBindingModel.getAnswer();
+            Question question = questions.stream().filter(q->q.getId().equals(questionBindingModel.getId())).findFirst().orElse(null);
+            Answer answer = new Answer(answerText,question, log);
             answerRepository.saveAndFlush(answer);
         }
 

@@ -9,13 +9,13 @@ import javax.persistence.*;
 public class Answer {
     private Integer id;
     private String text;
-    private Integer logId;
-    private Integer questionId;
+    private Log log;
+    private Question question;
 
-    public Answer(String text, Integer questionId, Integer logId) {
+    public Answer(String text, Question question,Log log) {
         this.text = text;
-        this.logId = logId;
-        this.questionId = questionId;
+        this.log = log;
+        this.question = question;
     }
 
     public Answer() {
@@ -40,21 +40,23 @@ public class Answer {
         this.text = text;
     }
 
-    @Column(columnDefinition = "integer", nullable = false)
-    public Integer getLogId() {
-        return logId;
+    @ManyToOne()
+    @JoinColumn(nullable = false, name="logID")
+    public Log getLog() {
+        return log;
     }
 
-    public void setLogId(Integer logId) {
-        this.logId = logId;
+    public void setLog(Log log) {
+        this.log = log;
     }
 
-    @Column(columnDefinition = "integer", nullable = false)
-    public Integer getQuestionId() {
-        return questionId;
+    @ManyToOne()
+    @JoinColumn(nullable = false, name="questionID")
+    public Question getQuestion() {
+        return question;
     }
 
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }

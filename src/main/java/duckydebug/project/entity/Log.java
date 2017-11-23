@@ -3,6 +3,8 @@ package duckydebug.project.entity;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "logs")
@@ -12,12 +14,14 @@ public class Log {
     private String description;
     private Boolean isCompleted;
     private String dateCreated;
+    private Set<Answer> answers;
 
     public Log(String title, String description, Boolean isCompleted, String dateCreated) {
         this.title = title;
         this.description = description;
         this.isCompleted = isCompleted;
         this.dateCreated = dateCreated;
+        this.answers = new HashSet<>();
     }
 
     public Log() {
@@ -67,5 +71,14 @@ public class Log {
 
     public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    @OneToMany(mappedBy = "log")
+    public Set<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Set<Answer> answers) {
+        this.answers = answers;
     }
 }
