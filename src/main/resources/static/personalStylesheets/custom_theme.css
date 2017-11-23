@@ -89,3 +89,14 @@
     background-color: white;
     padding: 10px;
 }
+
+#logViewCard{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+}
+
+#logViewCard>section{
+    width: 100%;
+}

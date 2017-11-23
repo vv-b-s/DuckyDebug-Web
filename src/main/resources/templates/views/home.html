@@ -40,7 +40,7 @@
             <section id="logDescriptionTextView" th:text="${log.description}" class="mdc-card__supporting-text">
             </section>
             <section class="mdc-card__actions">
-                <button class="mdc-button mdc-button--compact mdc-card__action">View</button>
+                <a th:href="@{/log/{id}(id = ${log.id})}"><button class="mdc-button mdc-button--compact mdc-card__action">View</button></a>
             </section>
         </div>
     </div>

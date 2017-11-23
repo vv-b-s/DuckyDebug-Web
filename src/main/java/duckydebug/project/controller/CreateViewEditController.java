@@ -12,11 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class CreateViewEditController {
@@ -51,7 +54,7 @@ public class CreateViewEditController {
     @PostMapping("/create")
     public String postCreate(@ModelAttribute LogBindingModel logBindingModel, Model model){
 
-        //Create a new log and save it to the database
+        //Create a new log and save it to the database TODO: Fix DateTime string to a more simple one
         Log log = new Log(logBindingModel.getLogTitle(),
                 logBindingModel.getLogDescription(),false,LocalDateTime.now().toString());
         logRepository.saveAndFlush(log);
@@ -67,6 +70,31 @@ public class CreateViewEditController {
         return "redirect:/";
     }
 
+    @GetMapping("/log/{id}")
+    public String getLogView(Model model, @PathVariable Integer id){
+        Log log = logRepository.findOne(id);
+
+        if(log != null){
+            Set<Answer> answers = log.getAnswers();
+            LinkedList<Question> questions = new LinkedList<>();
+
+            for(Answer answer:answers){
+                String answerString = answer.getText();
+                questions.add(answer.getQuestion());
+                questions.getLast().setAnswer(answerString);
+            }
+            LogBindingModel lbm = new LogBindingModel(questions);
+
+            model.addAttribute("logTitle", log.getTitle());
+            model.addAttribute("logDescription",log.getDescription());
+            model.addAttribute("logBindingModel",lbm);
+            model.addAttribute("toolbarPageName", log.getTitle());
+            model.addAttribute("view","views/log");
+
+            return "base-layout";
+        }
+        return "redirect:/";
+    }
 
     /**
      * If no questions persist, this method will be invoked
