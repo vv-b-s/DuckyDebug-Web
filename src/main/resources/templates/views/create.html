@@ -1,13 +1,42 @@
 <!-- Create logs. Each log has its own question and answer to provide after -->
 <!--Objects binded with entity thanks to this topic: https://stackoverflow.com/questions/36500731/how-to-bind-an-object-list-with-thymeleaf -->
 <form th:action="@{/create}" method="post" th:object="${logBindingModel}">
-    <p>Log title</p><input type="text" th:name="logTitle"/>
+<div class="mdc-card" id="logForm">
+    <!--The attribute data-mdc-auto-init="MDCTextField" is responsible for invoking the JavaScriot-->
+    <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+        <input type="text" class="mdc-text-field__input mdc-card__title--large" id="titleInput" required="required" th:name="logTitle"/>
+        <label for="titleInput" class="mdc-text-field__label mdc-card__title--large">Enter log title here</label>
+    </div>
+    <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField">
+        <textarea id="textarea" class="mdc-text-field__input" th:name="logDescription"></textarea>
+        <label for="textarea" class="mdc-text-field__label">Give a short description to your log</label>
+    </div>
+    <section class="mdc-card__supporting-text">
+        <div th:each="question, stat : ${logBindingModel.questions}">
+            <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" style="width: 100%">
+                <textarea class="mdc-text-field__input" th:id="|questions[${stat.index}].id|" th:value="${question.getAnswer()}" th:name="|questions[${stat.index}].answer|"></textarea>
+                <label class="mdc-text-field__label" th:for="|questions[${stat.index}].id|" th:text="${question.getText()}"></label>
+            </div>
+            <!--Question ID is needed to keep relation with the answer-->
+            <input type="hidden" th:name="|questions[${stat.index}].id|" th:value="${question.getId()}"/>
+        </div>
+    </section>
+</div>
+<button class="mdc-fab mdc-ripple-upgraded mdc-ripple-upgraded--background-active-fill mdc-ripple-upgraded--foreground-activation" style="--mdc-ripple-fg-size:33.6px; --mdc-ripple-fg-scale:2.65464; --mdc-ripple-fg-translate-start:16.2px, 24.2px; --mdc-ripple-fg-translate-end:11.2px, 11.2px;" type="submit">
+   <span class="mdc-fab__icon">
+      <img th:src="@{/icons/ic_save_white_24dp_1x.png}"/>
+    </span>
+</button>
+</form>
+
+<!--<form th:action="@{/create}" method="post" th:object="${logBindingModel}">
+    <p>Log title</p><input type="text" />
     <p>Log Description</p><input type="text" th:name="logDescription"/>
     <div th:each="question, stat : ${logBindingModel.questions}">
         <p th:text="${question.getText()}"></p>
         <input type="text" th:value="${question.getAnswer()}" placeholder="Answer..." th:name="|questions[${stat.index}].answer|"/>
-        <!--Question ID is needed to keep relation with the answer-->
+        Question ID is needed to keep relation with the answer
         <input type="hidden" th:name="|questions[${stat.index}].id|" th:value="${question.getId()}"/>
     </div>
     <input type="submit"/>
-</form>
+</form>-->

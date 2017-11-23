@@ -82,3 +82,10 @@
     word-wrap: break-word;
     padding-top: 11px;
 }
+
+#logForm{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+}
