@@ -25,6 +25,8 @@ public class HomeController {
     public String getHome(Model model){
         List<Log> logs = logRepository.findAll();
 
+        StaticVariables.clearInstances();
+
         model.addAttribute("logs",logs);
         model.addAttribute("toolbarPageName","Home");
         model.addAttribute("view","views/home");
