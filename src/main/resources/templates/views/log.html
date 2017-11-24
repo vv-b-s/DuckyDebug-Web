@@ -1,12 +1,12 @@
 <div class="mdc-card demo-card" id="logViewCard">
     <section class="mdc-card__primary">
         <h1 class="mdc-card__title mdc-card__title--large" th:text="${logTitle}"></h1>
-        <h2 class="mdc-card__subtitle" th:text="${logDescription}"></h2>
+        <h2 class="mdc-card__subtitle" th:text="${logDescription}" style="word-wrap: break-word; width: 85%;"></h2>
     </section>
-    <div  th:each="question, stat : ${logBindingModel.questions}">
+    <div  th:each="question : ${questions}">
         <section class="mdc-card__supporting-text">
-            <h2 class="mdc-card__title" th:text="${question.getText()}"></h2>
-            <p th:text="${question.getAnswer()}"></p>
+            <h2 class="mdc-card__title" th:text="${question.text}"></h2>
+            <p th:text="${question.answer}"></p>
         </section>
     </div>
 </div>

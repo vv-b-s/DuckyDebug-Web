@@ -31,6 +31,7 @@ public class CreateViewEditController {
     @Autowired
     private AnswerRepository answerRepository;
 
+    private LogBindingModel logBindingModel = null;
     private List<Question> questions;
 
     @GetMapping("/create")
@@ -42,7 +43,8 @@ public class CreateViewEditController {
             questions = generateSampleQuestions();
 
         // Using binding model to extract answer and log data later
-        LogBindingModel logBindingModel = new LogBindingModel(questions);
+        if(logBindingModel==null)
+            logBindingModel = new LogBindingModel(questions);
 
         model.addAttribute("logBindingModel", logBindingModel);
         model.addAttribute("toolbarPageName", "Create Log");
@@ -62,7 +64,11 @@ public class CreateViewEditController {
         //Create answer entities and save them to the database
         for(Question questionBindingModel:logBindingModel.getQuestions()){
             String answerText = questionBindingModel.getAnswer();
-            Question question = questions.stream().filter(q->q.getId().equals(questionBindingModel.getId())).findFirst().orElse(null);
+            Question question = questions
+                    .stream()
+                    .filter(q->q.getId().equals(questionBindingModel.getId()))
+                    .findFirst()
+                    .orElse(null);
             Answer answer = new Answer(answerText,question, log);
             answerRepository.saveAndFlush(answer);
         }
@@ -75,19 +81,20 @@ public class CreateViewEditController {
         Log log = logRepository.findOne(id);
 
         if(log != null){
+            // Get the answers for the log from the database and create list to hold their questions
             Set<Answer> answers = log.getAnswers();
-            LinkedList<Question> questions = new LinkedList<>();
+            questions = new LinkedList<>();
 
+            //Find the questions for each answers and fill their answer placeholder with the answer text
             for(Answer answer:answers){
                 String answerString = answer.getText();
                 questions.add(answer.getQuestion());
-                questions.getLast().setAnswer(answerString);
+                ((LinkedList<Question>)questions).getLast().setAnswer(answerString);
             }
-            LogBindingModel lbm = new LogBindingModel(questions);
 
             model.addAttribute("logTitle", log.getTitle());
             model.addAttribute("logDescription",log.getDescription());
-            model.addAttribute("logBindingModel",lbm);
+            model.addAttribute("questions",questions);
             model.addAttribute("toolbarPageName", log.getTitle());
             model.addAttribute("view","views/log");
 
