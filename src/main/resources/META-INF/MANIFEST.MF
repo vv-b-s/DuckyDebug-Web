@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Class-Path: duckydebug.project.
+Class-Path: duckydebug.project
 Main-Class: duckydebug.project.DuckyDebugApplication
 
