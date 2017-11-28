@@ -1,12 +1,13 @@
 <div class="mdc-card demo-card" id="logViewCard">
     <section class="mdc-card__primary">
-        <h1 class="mdc-card__title mdc-card__title--large" th:text="${logTitle}"></h1>
+        <h1 class="mdc-card__title mdc-typography--display2" th:text="${logTitle}"></h1>
         <h2 class="mdc-card__subtitle" th:text="${logDescription}" style="word-wrap: break-word; width: 85%;"></h2>
     </section>
-    <div  th:each="question : ${questions}">
+    <div  th:each="question : ${questions}" class="mdc-elevation--z1 answer-card">
         <section class="mdc-card__supporting-text">
-            <h2 class="mdc-card__title" th:text="${question.text}"></h2>
-            <p th:text="${question.answer}"></p>
+            <h2 class="mdc-typography--headline" th:text="${question.text}"></h2>
+            <!--using data-th-utext will allow line breaking in thymeleaf https://stackoverflow.com/questions/30394419/thymeleaf-spring-how-to-keep-line-break -->
+            <p data-th-utext="${#strings.replace(#strings.escapeXml(question.answer),'&#10;','&lt;br&gt;')}" class="mdc-typography--body1" style="word-wrap: break-word"></p>
         </section>
     </div>
 </div>

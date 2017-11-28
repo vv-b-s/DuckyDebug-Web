@@ -100,3 +100,22 @@
 #logViewCard>section{
     width: 100%;
 }
+
+.answer-card{
+    margin-bottom: 7px;
+    background-color: #f2f2f2
+}
+
+#aboutPage>h1{
+    display: block;
+}
+
+#aboutPage>p{
+    display: inline-block;
+    margin: 0;
+
+}
+
+#aboutPage>p>p{
+    margin-top: 10px;
+}

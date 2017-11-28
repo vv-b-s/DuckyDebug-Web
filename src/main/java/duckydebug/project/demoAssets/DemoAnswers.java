@@ -7,7 +7,7 @@ import duckydebug.project.entity.Question;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DemoAnswers {
+class DemoAnswers {
     private static String[][] demoAnswerStrings = new String[][]{
         new String[]{
                 "In my personal CSS file at personalStylings>toolbar.css",

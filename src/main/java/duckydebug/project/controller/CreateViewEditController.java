@@ -23,18 +23,21 @@ import java.util.stream.Collectors;
 @Controller
 public class CreateViewEditController {
     // Declaring repositories
-    @Autowired
-    private QuestionRepository questionRepository;
-    @Autowired
-    private LogRepository logRepository;
-    @Autowired
-    private AnswerRepository answerRepository;
+    private final QuestionRepository questionRepository;
+    private final LogRepository logRepository;
+    private final AnswerRepository answerRepository;
 
     //Make shortcuts to static variables class
     private List<Question> questions = StaticVariables.questions;
     private Set<Answer> answers = StaticVariables.answers;
     private Log log = StaticVariables.log;
 
+    @Autowired
+    public CreateViewEditController(QuestionRepository questionRepository, LogRepository logRepository, AnswerRepository answerRepository) {
+        this.questionRepository = questionRepository;
+        this.logRepository = logRepository;
+        this.answerRepository = answerRepository;
+    }
 
 
     @GetMapping("/create")
@@ -84,8 +87,9 @@ public class CreateViewEditController {
             //Find the questions for each answers and fill their answer placeholder with the answer text
             for(Answer answer:answers){
                 String answerString = answer.getText();
-                questions.add(answer.getQuestion());
-                questions.get(questions.size()-1).setAnswer(answerString);
+                Question question = answer.getQuestion();
+                question.setAnswer(answerString);
+                questions.add(question);
             }
 
             //Sort questions to come in the order of the question ids
