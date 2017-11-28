@@ -3,7 +3,9 @@ package duckydebug.project.controller;
 import duckydebug.project.entity.Answer;
 import duckydebug.project.entity.Log;
 import duckydebug.project.repository.AnswerRepository;
+import duckydebug.project.repository.DatabaseStatusRepository;
 import duckydebug.project.repository.LogRepository;
+import duckydebug.project.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +18,25 @@ import java.util.Set;
 
 @Controller
 public class HomeController {
+    private final LogRepository logRepository;
+    private final AnswerRepository answerRepository;
+    private final DatabaseStatusRepository databaseStatusRepository;
+    private final QuestionRepository questionRepository;
+
     @Autowired
-    private LogRepository logRepository;
-    @Autowired
-    AnswerRepository answerRepository;
+    public HomeController(LogRepository logRepository, AnswerRepository answerRepository, DatabaseStatusRepository databaseStatusRepository, QuestionRepository questionRepository) {
+        this.logRepository = logRepository;
+        this.answerRepository = answerRepository;
+        this.databaseStatusRepository = databaseStatusRepository;
+        this.questionRepository = questionRepository;
+    }
 
     @GetMapping("/")
     public String getHome(Model model){
+        //Create demo content if the server is started for the first time
+        if(databaseStatusRepository.count()==0)
+            DemoController.createDemoContent(databaseStatusRepository,logRepository,questionRepository,answerRepository);
+
         List<Log> logs = logRepository.findAll();
 
         StaticVariables.clearInstances();

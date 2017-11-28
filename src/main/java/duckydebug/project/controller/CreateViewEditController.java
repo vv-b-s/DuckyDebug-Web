@@ -41,10 +41,6 @@ public class CreateViewEditController {
     public String getCreate(Model model){
         List<Question> questions = questionRepository.findAll();
 
-        // Since this is a demo app, there will be limited set of questions which will be generated on fist initialization
-        if(questions.size()==0)
-            questions = generateSampleQuestions();
-
         // Using binding model to extract answer and log data later
         LogBindingModel logBindingModel = new LogBindingModel(questions);
 
@@ -149,32 +145,6 @@ public class CreateViewEditController {
                 answerRepository.saveAndFlush(answer);
             }
         }
-        return "redirect:/";
-    }
-
-    /**
-     * If no questions persist, this method will be invoked
-     * @return
-     */
-    private List<Question> generateSampleQuestions(){
-        //Create an array of questions
-        String[] questions = {
-                "Where does the problem occur?",
-                "Do you have any guesses why does it happen?",
-                "What have you tried in order to fix it?",
-                "What can you try to fix it?",
-                "What resources have you checked in attempt to find a solution?",
-                "What search keywords did you use?",
-                "Is there anything on your mind you still haven't tried?"
-        };
-
-        ArrayList<Question> questionEntities = new ArrayList<>();
-        for(String question:questions){
-            Question questionEntity = new Question(question);
-            this.questionRepository.saveAndFlush(questionEntity);
-            questionEntities.add(questionEntity);
-        }
-
-        return questionEntities;
+        return "redirect:/log/"+log.getId();
     }
 }
