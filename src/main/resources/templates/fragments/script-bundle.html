@@ -10,3 +10,16 @@
         mdc.drawer.MDCTemporaryDrawer.attachTo(drawer).open = true;
     });
 </script>
+
+<!--Show snackbar when needed-->
+<script>
+    //
+    function showSnackbar() {
+        const snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
+        const dataObj = {
+            message: 'Loading...'
+
+        };
+        snackbar.show(dataObj);
+    }
+</script>

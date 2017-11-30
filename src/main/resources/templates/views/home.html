@@ -14,7 +14,7 @@
                 if not, there will be no 'checked' attribute-->
                 <div th:if="${log.isCompleted}">
                     <div class="mdc-checkbox">
-                        <input type="checkbox" checked="checked" id="basic-checkbox" class="mdc-checkbox__native-control" onchange="this.form.submit()"/>
+                        <input type="checkbox" checked="checked" id="basic-checkbox" class="mdc-checkbox__native-control" onchange="showSnackbar(); this.form.submit();"/>
                         <div class="mdc-checkbox__background">
                             <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
                                 <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
@@ -25,7 +25,7 @@
                 </div>
                 <div th:unless="${log.isCompleted}" >
                     <div class="mdc-checkbox">
-                        <input type="checkbox" id="basic-checkbox" class="mdc-checkbox__native-control" onchange="this.form.submit()"/>
+                        <input type="checkbox" id="basic-checkbox" class="mdc-checkbox__native-control" onchange="showSnackbar(); this.form.submit()"/>
                         <div class="mdc-checkbox__background">
                             <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
                                 <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
@@ -40,14 +40,14 @@
             <section id="logDescriptionTextView" th:text="${log.description}" class="mdc-card__supporting-text">
             </section>
             <section class="mdc-card__actions">
-                <a th:href="@{/log/{id}(id = ${log.id})}"><button class="mdc-button mdc-button--compact mdc-card__action">View</button></a>
+                <a th:href="@{/log/{id}(id = ${log.id})}"><button class="mdc-button mdc-button--compact mdc-card__action" onclick="showSnackbar()">View</button></a>
             </section>
         </div>
     </div>
 </th:block>
 <a th:href="@{/create}">
     <!--Floating Action Button (FAB) - one of the main Material components which makes this design sleek-->
-    <button class="mdc-fab mdc-ripple-upgraded mdc-ripple-upgraded--background-active-fill mdc-ripple-upgraded--foreground-activation" style="--mdc-ripple-fg-size:33.6px; --mdc-ripple-fg-scale:2.65464; --mdc-ripple-fg-translate-start:16.2px, 24.2px; --mdc-ripple-fg-translate-end:11.2px, 11.2px;" type="submit">
+    <button class="mdc-fab mdc-ripple-upgraded mdc-ripple-upgraded--background-active-fill mdc-ripple-upgraded--foreground-activation" style="--mdc-ripple-fg-size:33.6px; --mdc-ripple-fg-scale:2.65464; --mdc-ripple-fg-translate-start:16.2px, 24.2px; --mdc-ripple-fg-translate-end:11.2px, 11.2px;" type="submit" onclick="showSnackbar()">
    <span class="mdc-fab__icon">
       <img th:src="@{/icons/ic_note_add_white_24dp_1x.png}"/>
     </span>
@@ -59,6 +59,7 @@
         let confirmation = confirm("Do you really want to delete this log?\nPlease keep in mind that this is irreversible action!");
         switch (confirmation){
             case true:
+                showSnackbar();
                 window.location.replace(`/log/${logID}/delete`);
                 break;
             case false: break;
