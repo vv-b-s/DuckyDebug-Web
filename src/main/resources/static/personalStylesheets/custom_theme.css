@@ -4,6 +4,13 @@
     --mdc-theme-background: #fff;
 }
 
+a{
+    color: #006a48;
+
+}
+a:visited{
+    color: #51cba2;
+}
 
 .mainCardAttr{
     width:80%;
@@ -118,4 +125,28 @@
 
 #aboutPage>p>p{
     margin-top: 10px;
+}
+
+#helpPageTitle{
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+
+#helpingSection{
+    height: 100%;
+    background: white;
+    padding: 10px;
+}
+
+#helpContentsList>li{
+    margin-bottom: 8px;
+}
+
+#helpContentsList>li>ul>li{
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+#helpContentsList>li>ul>li>div{
+    background: #ebf9f5;
 }

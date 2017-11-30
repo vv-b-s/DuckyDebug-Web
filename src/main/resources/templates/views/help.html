@@ -1,3 +1,215 @@
 <!-- a page which provides instructions on how to use the application built for this site -->
-
-<!-- TODO: Implement help page (Consider a whole section)-->
+<h1 class="mdc-typography--display2 mdc-typography--adjust-margin" id="helpPageTitle">Welcome to the helping section!</h1>
+<div id="helpingSection" class="mdc-elevation--z3">
+    <p class="mdc-typography--body1">The following section is designed to help you workaround with the application.
+        Please select one of the following topics to find out more about:</p>
+    <ol>
+        <li><a href="#nav-through-pages">Navigate through pages</a></li>
+        <li><a href="#create-logs">Create logs</a></li>
+        <li><a href="#view-logs">View logs</a></li>
+        <li><a href="#edit-logs">Edit logs</a></li>
+        <li><a href="#mark-log-completed">Mark log as completed</a></li>
+        <li><a href="#delete-log">Delete log</a></li>
+    </ol>
+    <ol id="helpContentsList">
+        <li id="nav-through-pages" class="mdc-typography--display1">
+            Navigate through pages
+            <ul class="mdc-grid-list__tiles">
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/nav-bar-drawer-btn.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            Use the navigation bar drawer button to walk around pages.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/home-link-on-the-logo.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            To return to the home page you can either click the 'Home' link from the drawer navigation or
+                            click the ducky logo.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/fab-example.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            Use the floating action buttons to operate content.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/functional-buttons.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            Use the buttons on each log to do modifications on the whole content.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/view-log-btn.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            Click the 'View' button on any log to view its content
+                        </section>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li id="create-logs" class="mdc-typography--display1">
+            Create logs
+            <ul class="mdc-grid-list__tiles">
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/fab-example.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            Click the floating action button in the home page.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/log-creation-form.png}" height="130dp" width="165dp"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            Fill in the form.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/save-btn-example.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            When you're done click save.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/name-your-log-warn.png}" height="100dp"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            Don't forget to name your log!
+                        </section>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li id="view-logs" class="mdc-typography--display1">
+            View logs
+            <ul class="mdc-grid-list__tiles">
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/view-log-btn.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            On the home page click the 'View' button of the related log card.
+                        </section>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li id="edit-logs" class="mdc-typography--display1">
+            Edit Logs
+            <ul class="mdc-grid-list__tiles">
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/view-log-btn.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            On the home page click the 'View' button of the related log card.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/pencil-shaped-icon.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            Inside the log click the pencil-shaped icon and an Edit form will open.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/save-btn-example.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            After you're done click save.
+                        </section>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li id="mark-log-completed" class="mdc-typography--display1">
+            Mark log as completed
+            <ul class="mdc-grid-list__tiles">
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/functional-buttons.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            On the matching log card, click the checkbox
+                        </section>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li id="delete-log" class="mdc-typography--display1">
+            Delete log
+            <ul class="mdc-grid-list__tiles">
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/functional-buttons.png}"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            On the matching log card, click the trash icon.
+                        </section>
+                    </div>
+                </li>
+                <li class="mdc-grid-tile">
+                    <div class="mdc-card">
+                        <section class="mdc-card__media">
+                            <img th:src="@{/helpPageAssets/delete-img-alert.png}" height="100dp"/>
+                        </section>
+                        <section class="mdc-card__supporting-text">
+                            Confirm your deletion.
+                        </section>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ol>
+</div>
+<a href="#helpingSection">
+    <!--Floating Action Button (FAB) - one of the main Material components which makes this design sleek-->
+    <button class="mdc-fab mdc-ripple-upgraded mdc-ripple-upgraded--background-active-fill mdc-ripple-upgraded--foreground-activation" style="--mdc-ripple-fg-size:33.6px; --mdc-ripple-fg-scale:2.65464; --mdc-ripple-fg-translate-start:16.2px, 24.2px; --mdc-ripple-fg-translate-end:11.2px, 11.2px;" type="submit">
+   <span class="mdc-fab__icon">
+      <img th:src="@{/icons/ic_arrow_upward_white_24dp_1x.png}"/>
+    </span>
+    </button>
+</a>
