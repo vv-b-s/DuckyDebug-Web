@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class StaticPagesController {
-    @GetMapping("/eula")
-    public String getEula(Model model){
-        return loadPage(model, "views/eula", "End User Licence Agreement");
-    }
-
     @GetMapping("/help")
     public String getHelp(Model model){
         return loadPage(model, "views/help","Help");
